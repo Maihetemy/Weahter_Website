@@ -1,36 +1,13 @@
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
 
-:root{
-  --main-color: #2C3E50;
-  --secondary-color: #1ABC9C;
-}
+@source "../node_modules/flowbite";
 
-.flex-center{
-  @apply flex justify-center items-center
-}
-
-.row{
-  @apply flex justify-center items-center flex-wrap p-3
-}
-
-.col{
-  @apply sm:w-full md:w-1/2 lg:w-1/3
-}
-.active{
-  background-color: var(--secondary-color);
-  border-radius: .5rem;
-  transition: background-color .75s;
-}
-
-.main-color{
-  color: var(--main-color);
-}
-.secondary-color{
-  color: var(--secondary-color);
-}
-.main-bg-color{
-  background-color: var(--main-color);
-}
-.secondary-bg-color{
-  color: var(--secondary-color);
+@theme {
+    --color-primary-dark: #101014;
+    --color-secondary-dark: #272727;
+    --color-primary-light: #FEFCF6;
+    --color-secondary-light: #FDF7ED;
+    --color-primary: #FDD73A;
 }

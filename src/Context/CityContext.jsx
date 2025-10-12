@@ -12,16 +12,17 @@ export function WeatherAndCityProvider({ children }) {
     return localStorage.getItem("city") || "Port Said";
   });
 
+  const [isValidCity, setIsValidCity] = useState(true);
   useEffect(() => {
     if (weather) {
+      localStorage.setItem("city", city);
       localStorage.setItem("weather", JSON.stringify(weather));
     }
-    localStorage.setItem("city", city);
   }, [weather, city]);
 
   return (
     <WeatherAndCityContext.Provider
-      value={{ weather, setWeather, city, setCity }}
+      value={{ weather, setWeather, city, setCity, isValidCity, setIsValidCity }}
     >
       {children}
     </WeatherAndCityContext.Provider>

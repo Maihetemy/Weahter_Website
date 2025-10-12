@@ -10,7 +10,7 @@ const API = axios.create({
 });
 
 export default function useWeatherApi() {
-  const { city, setWeather } = useWeatherAndCity();
+  const { city, setCity, setWeather, setIsValidCity } = useWeatherAndCity();
   const getCurrentWeather = async () => {
     try {
       const { data } = await API.get(
@@ -19,10 +19,13 @@ export default function useWeatherApi() {
       localStorage.setItem("city", city);
       localStorage.setItem("weatherData", JSON.stringify(data));
       setWeather(data);
+      setIsValidCity(true);
+      setCity(city);
       console.log(data);
-
+      
       return data;
     } catch (error) {
+      setIsValidCity(false);
       console.log("Error fetching weather:", error);
       const lastCity = localStorage.getItem("city") || "port said";
       const savedData = localStorage.getItem("weatherData");
@@ -31,7 +34,6 @@ export default function useWeatherApi() {
       if (savedData) {
         console.warn("Using cached weather data.");
         console.log(JSON.parse(savedData));
-        setWeather(data);
         return JSON.parse(savedData);
       }
 

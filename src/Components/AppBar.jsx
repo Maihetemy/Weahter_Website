@@ -24,7 +24,6 @@ export default function AppBar() {
       }
     : { weekday: "", year: "", month: "", day: "" };
 
-
   return (
     <div className="flex flex-nowrap p-2 mb-5 items-center gap-4 justify-between text-primary-dark dark:text-primary-light">
       {/* date */}

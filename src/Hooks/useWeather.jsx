@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import useWeatherApi from "./../APIs/WeatherApi";
+import { useWeatherAndCity } from "../Context/CityContext";
 
 export default function useWeather() {
-  const queryKey = ["CurrentWeather"];
+  const { city } = useWeatherAndCity();
   const { getCurrentWeather } = useWeatherApi();
+  const queryKey = ["CurrentWeather", city];
+
   let {
     data: CurrentWeather,
     isLoading,

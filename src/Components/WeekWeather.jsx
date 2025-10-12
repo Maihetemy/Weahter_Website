@@ -1,12 +1,15 @@
 import DayWeatherCard from "./DayWeatherCard";
 import useWeather from "./../Hooks/useWeather";
 import LoadingSpinner from "./LoadingSpinner";
-import { useWeatherAndCity } from "../Context/CityContext";
 
 export default function WeekWeather() {
-  const { city } = useWeatherAndCity();
-  const { CurrentWeather, isLoading, error } = useWeather(city);
+  const { CurrentWeather, isLoading, error } = useWeather();
+
+  if (isLoading || !CurrentWeather) return <LoadingSpinner size={25} />;
+  if (error) return <p>Error: {error.message || "Something went wrong"}</p>;
+  
   console.log("week weather ============>", CurrentWeather);
+  console.log(error);
 
   const getWeekday = (dateString) => {
     const date = new Date(dateString);

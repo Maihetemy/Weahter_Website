@@ -6,7 +6,8 @@ import { useWeatherAndCity } from "../Context/CityContext";
 import { useEffect } from "react";
 
 export default function GlassySearchBar() {
-  const { city, setCity } = useWeatherAndCity();
+  const { city, setCity, isValidCity } = useWeatherAndCity();
+  console.log(isValidCity);
   let citySchema = Yup.object().shape({
     city: Yup.string()
       .min(2, "City must be at least 2 characters")
@@ -17,9 +18,8 @@ export default function GlassySearchBar() {
     const newCity = values.city.trim();
     if (newCity) {
       setCity(newCity);
-      localStorage.setItem("city", newCity);
+      console.log("Searching for:", newCity);
     }
-    console.log("Searching for:", newCity);
   };
 
   let formik = useFormik({
@@ -60,9 +60,11 @@ export default function GlassySearchBar() {
         placeholder="Search..."
         className="flex-1 p-1 bg-transparent outline-none focus:ring-0 focus:outline-none border-0 text-gray-700 dark:text-gray-200 placeholder-gray-400"
       />
-      {formik.touched.city && formik.errors.city && (
-        <p className="text-red-500 text-xs">{formik.errors.city}</p>
-      )}
+      {(formik.touched.city && formik.errors.city) || !isValidCity ? (
+        <p className="text-red-500 text-xs">
+          {formik.errors.city || "City not found. Please try again."}
+        </p>
+      ) : null}
     </form>
   );
 }

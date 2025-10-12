@@ -6,8 +6,17 @@
 
 @theme {
     --color-primary-dark: #101014;
-    --color-secondary-dark: #272727;
+    --color-secondary-dark: #2727276A;
     --color-primary-light: #FEFCF6;
-    --color-secondary-light: #FDF7ED;
+    --color-secondary-light: #FDF7EDE6;
     --color-primary: #FDD73A;
+}
+
+@layer utilities {
+  .lightFont {
+    font-size: .80rem !important; /* text-xs */
+    /* font-weight: 00 !important;   font-semibold */
+    color: #9ca3af !important;     /* text-gray-400 */
+    text-transform: capitalize !important;
+  }
 }

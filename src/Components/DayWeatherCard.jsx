@@ -1,16 +1,38 @@
-export default function DayWeatherCard() {
+import PropTypes from "prop-types";
+
+export default function DayWeatherCard({ dayWeather = [], dayName = "Sun" }) {
+  console.log(dayWeather);
   return (
-    <div
-      className="w-full shadow-lg text-gray-500 bg-secondary-light dark:bg-secondary-dark dark:text-gray-100 h-48
-    dark:bg- rounded-2xl flex flex-col items-center justify-center"
-    >
-      <p className=" font-semibold capitalize text-main"> mon</p>
-      <img
-        className="p-8 rounded-t-lg"
-        src="/docs/images/products/apple-watch.png"
-        alt="product image"
-      />
-      <p className="font-semibold capitalize">14&deg;</p>
-    </div>
+    <>
+      <div className="w-full shadow-lg text-gray-500 bg-secondary-light dark:bg-secondary-dark dark:text-gray-100 h-48 rounded-2xl flex flex-col items-center justify-center">
+        <p className="font-semibold capitalize text-main">{dayName}</p>
+        <img
+          className="p-8 rounded-t-lg"
+          src={dayWeather?.day?.condition?.icon}
+          alt="weather icon"
+        />
+        <p className="font-semibold capitalize">
+          {dayWeather?.day?.avgtemp_c}&deg;
+        </p>
+      </div>
+
+      <div />
+    </>
   );
 }
+
+DayWeatherCard.propTypes = {
+  day: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      day: PropTypes.shape({
+        avgtemp_c: PropTypes.number.isRequired,
+        condition: PropTypes.shape({
+          icon: PropTypes.string.isRequired,
+        }).isRequired,
+      }),
+    })
+  ).isRequired,
+};
+// [0].day.condition.icon
+// [0].day.avgtemp_c;

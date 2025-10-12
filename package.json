@@ -10,16 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-regular-svg-icons": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
+    "@material-tailwind/react": "^2.1.10",
     "@tailwindcss/vite": "^4.0.4",
     "@tanstack/react-query": "^5.85.5",
     "axios": "^1.11.0",
+    "chart.js": "^4.5.0",
     "flowbite": "^3.1.2",
+    "formik": "^2.4.6",
     "generate-react-cli": "^8.4.9",
     "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^7.1.5",
-    "tailwindcss": "^4.0.4"
+    "recharts": "^3.2.1",
+    "tailwindcss": "^4.0.4",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

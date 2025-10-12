@@ -1,14 +1,19 @@
-import React from "react";
-import DayWeatherCard from "./../Components/DayWeatherCard";
-import CurrentWeather from "./../Components/CurrentWeather";
+import AppBar from "../Components/AppBar.jsx";
+import CurrentWeather from "./../Components/CurrentWeather.jsx";
+import WeekWeather from "./../Components/WeekWeather";
 export default function Home() {
   return (
-    <div className="p-4 flex bg-primary-light dark:bg-primary-dark min-h-lvh">
-      <div className="w-1/3 p-2">
+    <div className="tracking-wide flex flex-col px-5 md:flex-row bg-primary-light  dark:bg-primary-dark h-screen">
+      <div className="w-full lg:w-1/4 h-max py-3">
         <CurrentWeather />
       </div>
-      <div className="w-2/3 p-2">
-        <DayWeatherCard />
+      <div className="flex flex-1 h-full px-5">
+        <div className="inline-block max-h-dvh min-h-[1em] w-[1px] self-stretch bg-neutral-100 dark:bg-white/10" />
+      </div>
+
+      <div className="w-full lg:w-3/4 p-5">
+        <AppBar />
+        <WeekWeather />
       </div>
     </div>
   );

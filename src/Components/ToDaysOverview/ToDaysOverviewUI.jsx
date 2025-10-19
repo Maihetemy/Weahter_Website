@@ -1,6 +1,7 @@
 import React from "react";
 import WindStatus from "./WindStatus";
 import UVIndex from "./UVIndex";
+import SunriseAndSunset from "./sunrise_sunset";
 
 export default function ToDaysOverviewUI() {
   return (
@@ -12,6 +13,9 @@ export default function ToDaysOverviewUI() {
         </div>
         <div className="w-1/3 card_bg">
           <UVIndex />
+        </div>
+        <div className="w-1/3 card_bg">
+          <SunriseAndSunset />
         </div>
       </div>
     </div>

@@ -8,10 +8,18 @@ import useWeather from "./../Hooks/useWeather";
 export default function AppBar() {
   const { CurrentWeather, isLoading, error } = useWeather();
 
+  // const { isValidCity, setIsValidCity } = useWeather();
   if (isLoading || !CurrentWeather) return <LoadingSpinner size={25} />;
 
   if (error) return <p>Error: {error.message || "Something went wrong"}</p>;
 
+  // if (!isValidCity)
+  //   return (
+  //     <p>
+  //       Oops! We couldn’t find that city. Please check the spelling and try
+  //       again.
+  //     </p>
+  //   );
   const date = CurrentWeather?.location?.localtime
     ? new Date(CurrentWeather.location.localtime)
     : null;

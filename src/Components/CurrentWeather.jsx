@@ -23,9 +23,7 @@ export default function CurrentWeather() {
       className="relative w-full text-gray-500
     dark:bg- rounded-2xl flex flex-col p-4 space-y-2"
     >
-      <h1 className="text-3xl capitalize font-semibold text-primary-dark dark:text-primary-light">
-        mai hetemy
-      </h1>
+      <h1 className="text-3xl title">mai hetemy</h1>
       <p className="lightFont flex">
         <span className="pe-1.5">
           {isLoading ? (

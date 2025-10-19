@@ -5,18 +5,33 @@
 @source "../node_modules/flowbite";
 
 @theme {
-    --color-primary-dark: #101014;
-    --color-secondary-dark: #2727276A;
-    --color-primary-light: #FEFCF6;
-    --color-secondary-light: #FDF7EDE6;
-    --color-primary: #FDD73A;
+  --color-primary-dark: #101014;
+  --color-secondary-dark: #2727276A;
+  --color-primary-light: #FEFCF6;
+  --color-secondary-light: #FDF7EDE6;
+  --color-primary: #FDD73A;
 }
 
-@layer utilities {
+/* @layer utilities {
   .lightFont {
-    font-size: .80rem !important; /* text-xs */
-    /* font-weight: 00 !important;   font-semibold */
-    color: #9ca3af !important;     /* text-gray-400 */
+    font-size: .80rem;
+    text-xs
+    font-weight: 00 !important;
+    font-semibold
+    color: rgba(172, 172, 172, 0.747);
+    text-gray-400
     text-transform: capitalize !important;
   }
+} */
+
+.title {
+  @apply capitalize font-semibold text-primary-dark dark:text-primary-light;
+}
+
+.lightFont {
+  @apply text-sm text-gray-400 capitalize;
+}
+
+.card_bg {
+  @apply bg-secondary-light dark:bg-secondary-dark rounded-2xl shadow;
 }

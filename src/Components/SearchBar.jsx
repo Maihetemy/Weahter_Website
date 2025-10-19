@@ -6,7 +6,8 @@ import { useWeatherAndCity } from "../Context/CityContext";
 import { useEffect } from "react";
 
 export default function GlassySearchBar() {
-  const { city, setCity, isValidCity } = useWeatherAndCity();
+  const { city, setCity, isValidCity, isAppBarTouched, setIsAppBarTouched } =
+    useWeatherAndCity();
   console.log(isValidCity);
   let citySchema = Yup.object().shape({
     city: Yup.string()
@@ -16,12 +17,15 @@ export default function GlassySearchBar() {
 
   const handleCityChange = (values) => {
     const newCity = values.city.trim();
+    console.log(values);
+
+    console.log(formik.isTouched);
+
     if (newCity) {
       setCity(newCity);
       console.log("Searching for:", newCity);
     }
   };
-
   let formik = useFormik({
     initialValues: {
       city: city || "",
@@ -35,8 +39,8 @@ export default function GlassySearchBar() {
   });
 
   useEffect(() => {
-    console.log("Formik Errors:", formik.errors);
-  }, [formik.errors]);
+    setIsAppBarTouched(!!formik.touched.city);
+  }, [formik.errors, formik.touched.city, setIsAppBarTouched]);
 
   return (
     <form
@@ -60,9 +64,11 @@ export default function GlassySearchBar() {
         placeholder="Search..."
         className="flex-1 p-1 bg-transparent outline-none focus:ring-0 focus:outline-none border-0 text-gray-700 dark:text-gray-200 placeholder-gray-400"
       />
-      {(formik.touched.city && formik.errors.city) || !isValidCity ? (
+      {formik.touched.city && formik.errors.city ? (
+        <p className="text-red-500 text-xs">{formik.errors.city}</p>
+      ) : !isValidCity ? (
         <p className="text-red-500 text-xs">
-          {formik.errors.city || "City not found. Please try again."}
+          City not found. Please try again.
         </p>
       ) : null}
     </form>

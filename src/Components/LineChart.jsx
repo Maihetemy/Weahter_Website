@@ -25,8 +25,7 @@ ChartJS.register(
 const rootStyles = getComputedStyle(document.documentElement);
 const primaryColor = rootStyles.getPropertyValue("--color-primary").trim();
 
-
-export default function LineChart({hoursWeather}) {
+export default function LineChart({ hoursWeather }) {
   const [chartData, setChartData] = useState({
     labels: ["Morning", "Afternoon", "Evening", "Night"],
     datasets: [
@@ -61,47 +60,47 @@ export default function LineChart({hoursWeather}) {
   }, [hoursWeather]);
 
   const options = {
-  responsive: true,
-  scales: {
-    x: {
-      grid: {
-        display: false, // ❌ removes vertical grid lines
-        drawBorder: false,
-      },
-      ticks: {
-        color: "#9ca3af", // ✅ change x-axis label color
-        font: {
-          size: 12,
-          family: "Arial",
+    responsive: true,
+    scales: {
+      x: {
+        grid: {
+          display: false, // ❌ removes vertical grid lines
+          drawBorder: false,
+        },
+        ticks: {
+          color: "#9ca3af", // ✅ change x-axis label color
+          font: {
+            size: 12,
+            family: "Arial",
+          },
+        },
+        callback: function (value, index) {
+          // Show label + temperature under it
+          const label = this.getLabelForValue(value); // Morning, Afternoon...
+          const temp = chartData.datasets[0].data[index]; // temperature for that label
+          return `${label}\n${temp}°`; // newline for temp under label
         },
       },
-      callback: function (value, index) {
-        // Show label + temperature under it
-        const label = this.getLabelForValue(value); // Morning, Afternoon...
-        const temp = chartData.datasets[0].data[index]; // temperature for that label
-        return `${label}\n${temp}°`; // newline for temp under label
+      y: {
+        display: false, // ❌ hides Y-axis completely
+        grid: {
+          display: false, // ❌ removes horizontal grid lines
+        },
       },
     },
-    y: {
-      display: false, // ❌ hides Y-axis completely
-      grid: {
-        display: false, // ❌ removes horizontal grid lines
+    plugins: {
+      legend: false,
+      tooltip: {
+        enabled: true, // ✅ show on hover
+      },
+      datalabels: {
+        display: false, // ❌ hide always-visible labels
       },
     },
-  },
-  plugins: {
-    legend: false,
-    tooltip: {
-      enabled: true, // ✅ show on hover
-    },
-    datalabels: {
-      display: false, // ❌ hide always-visible labels
-    },
-  },
-};
+  };
 
   return (
-    <div className="w-full py-5 bg-secondary-light dark:bg-secondary-dark p-4 rounded-2xl shadow">
+    <div className="w-full p-4 py-5 card_bg">
       <h1 className="capitalize text-xl mb-5 text-primary-dark dark:text-primary-light">
         temperature
       </h1>

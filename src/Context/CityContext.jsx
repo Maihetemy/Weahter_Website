@@ -13,6 +13,9 @@ export function WeatherAndCityProvider({ children }) {
   });
 
   const [isValidCity, setIsValidCity] = useState(true);
+
+  const [isAppBarTouched, setIsAppBarTouched] = useState(false);
+
   useEffect(() => {
     if (weather) {
       localStorage.setItem("city", city);
@@ -22,7 +25,16 @@ export function WeatherAndCityProvider({ children }) {
 
   return (
     <WeatherAndCityContext.Provider
-      value={{ weather, setWeather, city, setCity, isValidCity, setIsValidCity }}
+      value={{
+        weather,
+        setWeather,
+        city,
+        setCity,
+        isValidCity,
+        setIsValidCity,
+        isAppBarTouched,
+        setIsAppBarTouched,
+      }}
     >
       {children}
     </WeatherAndCityContext.Provider>

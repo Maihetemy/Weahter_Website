@@ -10,19 +10,49 @@ const API = axios.create({
 });
 
 export default function useWeatherApi() {
-  const { city, setCity, setWeather, setIsValidCity } = useWeatherAndCity();
+  const {
+    city,
+    setCity,
+    setWeather,
+    setIsValidCity,
+    isAppBarTouched,
+    setIsAppBarTouched,
+  } = useWeatherAndCity();
+
   const getCurrentWeather = async () => {
     try {
+      // Try to get location from Geolocation API
+
+      let query = city;
+      if (!isAppBarTouched) {
+        await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              query = `${latitude},${longitude}`;
+              resolve(true);
+            },
+            (error) => {
+              console.warn("Location not available, using city name.", error);
+              resolve(false);
+            }
+          );
+        });
+      }
+
+      console.log(query);
+
       const { data } = await API.get(
-        `/forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no`
+        `/forecast.json?key=${API_KEY}&q=${query}&days=3&aqi=no&alerts=no`
       );
-      localStorage.setItem("city", city);
+      localStorage.setItem("city", query);
       localStorage.setItem("weatherData", JSON.stringify(data));
       setWeather(data);
       setIsValidCity(true);
-      setCity(city);
+      console.log(city);
+      setCity(data.location.name);
       console.log(data);
-      
+
       return data;
     } catch (error) {
       setIsValidCity(false);

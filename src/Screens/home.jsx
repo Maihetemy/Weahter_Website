@@ -1,6 +1,7 @@
 import AppBar from "../Components/AppBar.jsx";
 import CurrentWeather from "./../Components/CurrentWeather.jsx";
 import WeekWeather from "./../Components/WeekWeather";
+import ToDaysOverviewUI from "./../Components/ToDaysOverview/ToDaysOverviewUI";
 export default function Home() {
   return (
     <div className="tracking-wide flex flex-col px-5 md:flex-row bg-primary-light  dark:bg-primary-dark h-screen">
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="w-full lg:w-3/4 p-5">
         <AppBar />
         <WeekWeather />
+        <ToDaysOverviewUI />
       </div>
     </div>
   );

@@ -14,8 +14,8 @@ export default function UVIndex() {
   if (error) return <p>Error: {error.message || "Something went wrong"}</p>;
 
   return (
-    <div className="p-4">
-      <h3 className="lightFont">UV index</h3>
+    <div className="p-4 card_bg h-full">
+      <h3 className="title font-normal text-md mb-5">UV index</h3>
       <GaugeComponent
         value={CurrentWeather?.current?.uv}
         labels={{

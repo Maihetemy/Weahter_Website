@@ -66,8 +66,8 @@ export default function WindStatus() {
   if (error) return <p>Error: {error.message || "Something went wrong"}</p>;
 
   return (
-    <div className="flex flex-col justify-center items-start p-4">
-      <h3 className="lightFont">Wind Status</h3>
+    <div className="flex flex-col justify-center items-start p-4 card_bg h-full">
+      <h3 className="title font-normal text-md">Wind Status</h3>
 
       <Bar data={data} options={options} />
 

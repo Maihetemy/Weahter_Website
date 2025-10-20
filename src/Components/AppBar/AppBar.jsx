@@ -1,9 +1,8 @@
-import AvatarImage from "../assets/imgs/WhatsApp Image 2025-05-24 at 17.11.38_d06952d2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 import GlassySearchBar from "./SearchBar";
-import useWeather from "./../Hooks/useWeather";
+import useWeather from "../../Hooks/useWeather";
 
 export default function AppBar() {
   const { CurrentWeather, isLoading, error } = useWeather();
@@ -47,15 +46,7 @@ export default function AppBar() {
 
       <GlassySearchBar className="w-1/2" />
 
-      {/* image + notifications */}
-      <div className="w-1/4 flex items-center justify-end gap-3">
-        <FontAwesomeIcon icon={faBell} size="lg" className="pe-5" />
-        <img
-          className="w-12 h-12 rounded-full"
-          src={AvatarImage}
-          alt="Rounded avatar"
-        />
-      </div>
+      <FontAwesomeIcon icon={faBell} size="lg" className="pe-5" />
     </div>
   );
 }

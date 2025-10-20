@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useWeatherAndCity } from "../Context/CityContext";
+import { useWeatherAndCity } from "../../Context/CityContext";
 import { useEffect } from "react";
 
 export default function GlassySearchBar() {

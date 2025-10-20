@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 export default function DayWeatherCard({ dayWeather = [], dayName = "Sun" }) {
   return (
     <>
-      <div className="card_bg w-full text-gray-500 bg-secondary-light dark:text-gray-100 h-48 flex flex-col items-center justify-center">
+      <div className="card_bg w-full text-gray-500 bg-secondary-light dark:text-gray-100 flex flex-col items-center justify-center py-5">
         <p className="font-semibold capitalize text-main">{dayName}</p>
         <img
-          className="p-8 rounded-t-lg"
+          className="w-3/4 rounded-t-lg"
           src={dayWeather?.day?.condition?.icon}
           alt="weather icon"
         />

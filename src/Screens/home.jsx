@@ -1,7 +1,7 @@
-import AppBar from "../Components/AppBar.jsx";
-import CurrentWeather from "./../Components/CurrentWeather.jsx";
-import WeekWeather from "./../Components/WeekWeather";
-import ToDaysOverviewUI from "./../Components/ToDaysOverview/ToDaysOverviewUI";
+import CurrentWeather from './../Components/CurrentWeatherSection/CurrentWeather';
+import AppBar from './../Components/AppBar/AppBar';
+import WeekWeather from './../Components/WeekWeather/WeekWeather';
+import ToDaysOverviewUI from './../Components/ToDaysOverview/ToDaysOverviewUI';
 export default function Home() {
   return (
     <div className="tracking-wide flex flex-col px-5 md:flex-row bg-primary-light  dark:bg-primary-dark h-screen">

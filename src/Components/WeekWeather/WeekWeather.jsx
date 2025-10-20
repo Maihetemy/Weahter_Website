@@ -1,6 +1,6 @@
 import DayWeatherCard from "./DayWeatherCard";
-import useWeather from "./../Hooks/useWeather";
-import LoadingSpinner from "./LoadingSpinner";
+import useWeather from "../../Hooks/useWeather";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function WeekWeather() {
   const { CurrentWeather, isLoading, error } = useWeather();

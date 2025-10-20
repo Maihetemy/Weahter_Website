@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +12,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import LoadingSpinner from "../LoadingSpinner";
+import useWeather from "../../Hooks/useWeather";
 
 ChartJS.register(
   CategoryScale,
@@ -25,7 +28,17 @@ ChartJS.register(
 const rootStyles = getComputedStyle(document.documentElement);
 const primaryColor = rootStyles.getPropertyValue("--color-primary").trim();
 
-export default function LineChart({ hoursWeather }) {
+export default function LineChart() {
+  const { CurrentWeather, isLoading, error } = useWeather();
+
+  const hoursWeather = useMemo(() => {
+    let hours = [6, 12, 18, 23];
+    return hours.map(
+      (hour) =>
+        CurrentWeather?.forecast?.forecastday[0]?.hour[hour]?.temp_c || 0
+    );
+  }, [CurrentWeather]);
+
   const [chartData, setChartData] = useState({
     labels: ["Morning", "Afternoon", "Evening", "Night"],
     datasets: [
@@ -99,11 +112,13 @@ export default function LineChart({ hoursWeather }) {
     },
   };
 
+  if (isLoading || !CurrentWeather) return <LoadingSpinner size={25} />;
+
+  if (error) return <p>Error: {error.message || "Something went wrong"}</p>;
+
   return (
-    <div className="w-full p-4 py-5 card_bg">
-      <h1 className="capitalize text-xl mb-5 text-primary-dark dark:text-primary-light">
-        temperature
-      </h1>
+    <div className="w-full p-4 py-5 card_bg h-full">
+      <h1 className="title font-normal text-md mb-5">temperature</h1>
       <Line data={chartData} options={options} />
     </div>
   );
@@ -112,16 +127,3 @@ export default function LineChart({ hoursWeather }) {
 LineChart.propTypes = {
   hoursWeather: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
-
-// const createGradient = (ctx) => {
-//   const chart = ctx.chart;
-//   const { ctx: canvasCtx, chartArea } = chart;
-//   if (!chartArea) return "#facc15"; // fallback before render
-
-//   // Create gradient that fades at start & end
-//   const gradient = canvasCtx.createLinearGradient(0, 0, chartArea.width, 0);
-//   gradient.addColorStop(0, "rgba(250, 204, 21, 0)"); // transparent start
-//   gradient.addColorStop(0.5, "rgba(250, 204, 21, 1)"); // solid middle
-//   gradient.addColorStop(1, "rgba(250, 204, 21, 0)"); // transparent end
-//   return gradient;
-// };

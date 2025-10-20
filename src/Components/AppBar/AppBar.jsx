@@ -32,10 +32,10 @@ export default function AppBar() {
     : { weekday: "", year: "", month: "", day: "" };
 
   return (
-    <div className="flex flex-nowrap p-2 mb-5 items-center gap-4 justify-between text-primary-dark dark:text-primary-light">
+    <div className="flex flex-nowrap md:p-2 mb-5 items-center gap-4 justify-between text-primary-dark dark:text-primary-light">
       {/* date */}
       <div className="w-1/4 flex flex-col ">
-        <h1 className="text-2xl font-semibold">
+        <h1 className="text-lg md:text-2xl font-semibold">
           {partsOfDate.month}, {partsOfDate.year}
         </h1>
         <h1 className="lightFont">
@@ -44,9 +44,11 @@ export default function AppBar() {
         </h1>
       </div>
 
-      <GlassySearchBar className="w-1/2" />
+      <div className="flex w-3/4 items-center justify-end">
+        <GlassySearchBar  />
 
-      <FontAwesomeIcon icon={faBell} size="lg" className="pe-5" />
+        <FontAwesomeIcon icon={faBell} size="lg" className="ps-5" />
+      </div>
     </div>
   );
 }

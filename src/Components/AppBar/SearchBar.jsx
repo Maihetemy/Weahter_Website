@@ -62,7 +62,7 @@ export default function GlassySearchBar() {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         placeholder="Search..."
-        className="flex-1 p-1 bg-transparent outline-none focus:ring-0 focus:outline-none border-0 text-gray-700 dark:text-gray-200 placeholder-gray-400"
+        className="flex-1 p-0 md:p-1 bg-transparent outline-none focus:ring-0 focus:outline-none border-0 text-gray-700 dark:text-gray-200 placeholder-gray-400"
       />
       {formik.touched.city && formik.errors.city ? (
         <p className="text-red-500 text-xs">{formik.errors.city}</p>

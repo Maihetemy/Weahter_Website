@@ -34,7 +34,9 @@ export default function CurrentWeather() {
       className="relative w-full text-gray-500
     dark:bg- rounded-2xl flex flex-col p-4 space-y-2"
     >
+      {/* profile data */}
       <div className="flex flex-nowrap justify-between">
+        {/* name and location */}
         <div className="flex flex-col">
           {/* name */}
           <h1 className="text-3xl title">mai hetemy</h1>
@@ -57,40 +59,43 @@ export default function CurrentWeather() {
         </div>
         {/* image avatar */}
         <img
-          className="w-17 h-17 md:h-13 md:w-13 rounded-full"
+          className="w-15 h-15 md:h-13 md:w-13 rounded-full"
           src={AvatarImage}
           alt="Rounded avatar"
         />
       </div>
-      {/* weather condition image */}
-      <div
-        className="relative -left-3.5 w-40 bg-cover bg-center mb-0 text-center"
-        style={{
-          backgroundImage: `url(${CurrentWeather?.current?.condition?.icon})`,
-          height: "140px",
-        }}
-      >
-        {isLoading ? <LoadingSpinner size={60} /> : null}
+      <div className="flex flex-nowrap md:flex-col">
+        {/* weather image */}
+        <div
+          className="relative -left-3.5 w-40 bg-cover bg-center mb-0 text-center"
+          style={{
+            backgroundImage: `url(${CurrentWeather?.current?.condition?.icon})`,
+            height: "140px",
+          }}
+        >
+          {isLoading ? <LoadingSpinner size={60} /> : null}
+        </div>
+        {/*  weather condition */}
+        <div className="flex flex-col md:flex-row md:flex-wrap  justify-center items-end md:justify-between md:items-center capitalize w-full  text-primary-dark dark:text-primary-light">
+          <h1 className="font-bold text-3xl md:w-3/4 ">
+            {isLoading ? (
+              <LoadingSpinner size={60} />
+            ) : (
+              CurrentWeather?.current?.temp_c
+            )}
+            &#8451;
+          </h1>
+
+          <p className="text-3xl text-end md:text-lg md:w-1/4">
+            {isLoading ? (
+              <LoadingSpinner size={32} />
+            ) : (
+              CurrentWeather?.current?.condition?.text
+            )}
+          </p>
+        </div>
       </div>
 
-      <div className="flex flex-wrap justify-between items-center capitalize w-full  text-primary-dark dark:text-primary-light">
-        <h1 className="text-4xl font-bold md:w-3/4 ">
-          {isLoading ? (
-            <LoadingSpinner size={60} />
-          ) : (
-            CurrentWeather?.current?.temp_c
-          )}
-          &#8451;
-        </h1>
-
-        <p className="text-lg text-end md:w-1/4">
-          {isLoading ? (
-            <LoadingSpinner size={32} />
-          ) : (
-            CurrentWeather?.current?.condition?.text
-          )}
-        </p>
-      </div>
       {/* break line /> */}
       <hr className="h-px my-3 bg-primary/10 border-0 " />
 
@@ -130,7 +135,7 @@ export default function CurrentWeather() {
         </div>
         {/* break line */}
         <div className="w-full flex justify-center">
-          <hr className="h-px my-1 bg-primary/10 border-0 w-3/4" />
+          <hr className="h-px my-1 bg-primary/10 border-0 w-full" />
         </div>
         {/* humidity */}
         <div className="w-full h-full flex flex-col">
@@ -155,7 +160,7 @@ export default function CurrentWeather() {
         </div>
         {/* break line */}
         <div className="w-full flex justify-center">
-          <hr className="h-px my-1 bg-primary/10 border-0 w-3/4" />
+          <hr className="h-px my-1 bg-primary/10 border-0 w-full" />
         </div>
         {/*visibility */}
         <div className="w-full h-full flex flex-col">

@@ -6,7 +6,7 @@ import { useWeatherAndCity } from "../../Context/CityContext";
 import { useEffect } from "react";
 
 export default function GlassySearchBar() {
-  const { city, setCity, isValidCity, isAppBarTouched, setIsAppBarTouched } =
+  const { city, setCity, isValidCity, setIsAppBarTouched } =
     useWeatherAndCity();
   console.log(isValidCity);
   let citySchema = Yup.object().shape({

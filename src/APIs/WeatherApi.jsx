@@ -16,7 +16,6 @@ export default function useWeatherApi() {
     setWeather,
     setIsValidCity,
     isAppBarTouched,
-    setIsAppBarTouched,
   } = useWeatherAndCity();
 
   const getCurrentWeather = async () => {
@@ -25,7 +24,7 @@ export default function useWeatherApi() {
 
       let query = city;
       if (!isAppBarTouched) {
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const { latitude, longitude } = position.coords;

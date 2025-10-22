@@ -107,45 +107,39 @@ export default function CurrentWeather() {
           <h2 className="title text-md font-normal">Sunrise and Sunset</h2>
           <div className=" h-full flex flex-col justify-around py-1">
             <div className="w-full flex justify-between lightFont items-center">
-              <p className="py-0.5 w-3/5">
-                {CurrentWeather?.forecast.forecastday[0].astro.sunrise}
-              </p>
-              <div className="flex items-center w-2/5">
+              <div className="flex items-center w-3/4">
                 <FontAwesomeIcon
                   icon={solidSun}
                   className="text-primary pe-1"
                 />
                 <p className="py-0.5">sunrise</p>
               </div>
-            </div>
-
-            <div className="w-full flex justify-between lightFont items-center">
-              <p className="py-0.5 w-3/5">
-                {CurrentWeather?.forecast.forecastday[0].astro.sunset}
+              <p className="py-0.5 w-1/4 title font-normal">
+                {CurrentWeather?.forecast.forecastday[0].astro.sunrise}
               </p>
-              <div className="flex items-center w-2/5">
+            </div>
+            <div className="w-full flex justify-between lightFont items-center">
+              <div className="flex items-center w-3/4">
                 <FontAwesomeIcon
                   icon={solidSun}
                   className="text-primary pe-1"
                 />
                 <p className="py-0.5">sunset</p>
               </div>
+              <p className="py-0.5 w-1/4 title font-normal">
+                {CurrentWeather?.forecast.forecastday[0].astro.sunset}
+              </p>
             </div>
           </div>
         </div>
         {/* break line */}
         <div className="w-full flex justify-center">
-          <hr className="h-px my-1 bg-primary/10 border-0 w-full" />
+          <hr className="h-px my-3 bg-primary/10 border-0 w-full" />
         </div>
         {/* humidity */}
         <div className="w-full h-full flex flex-col">
           <h2 className="title text-md font-normal py-1">humidity</h2>
           <div className="w-full flex justify-between lightFont items-center">
-            <div className="w-1/4">
-              <p className="title font-normal">
-                {CurrentWeather?.current?.humidity}%
-              </p>
-            </div>
             <div className="flex items-center w-3/4">
               <FontAwesomeIcon
                 icon={faCloudShowersWater}
@@ -156,25 +150,30 @@ export default function CurrentWeather() {
                 now
               </span>
             </div>
+            <div className="w-1/4">
+              <p className="title font-normal">
+                {CurrentWeather?.current?.humidity}%
+              </p>
+            </div>
           </div>
         </div>
         {/* break line */}
-        <div className="w-full flex justify-center">
-          <hr className="h-px my-1 bg-primary/10 border-0 w-full" />
+        <div className="w-full flex justify-center ">
+          <hr className="h-px my-3 bg-primary/10 border-0 w-full" />
         </div>
         {/*visibility */}
         <div className="w-full h-full flex flex-col">
           <h2 className="title text-md font-normal py-1">visibility</h2>
           <div className="w-full flex justify-between lightFont items-center">
-            <div className="w-1/4">
-              <p className="title font-normal">{visibility}KM</p>
-            </div>
             <div className="flex items-center w-3/4">
               <FontAwesomeIcon
                 className="pe-2 text-lg text-primary"
                 icon={faEye}
               />
               <span>{message}</span>
+            </div>
+            <div className="w-1/4">
+              <p className="title font-normal">{visibility}KM</p>
             </div>
           </div>
         </div>

@@ -12,13 +12,6 @@ export default function AppBar() {
 
   if (error) return <p>Error: {error.message || "Something went wrong"}</p>;
 
-  // if (!isValidCity)
-  //   return (
-  //     <p>
-  //       Oops! We couldn’t find that city. Please check the spelling and try
-  //       again.
-  //     </p>
-  //   );
   const date = CurrentWeather?.location?.localtime
     ? new Date(CurrentWeather.location.localtime)
     : null;
